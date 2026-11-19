@@ -1,0 +1,34 @@
+# Virtual environments
+.venv
+
+# Python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.nbc
+*.nbi
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build & distribution artifacts
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Local test datasets and files (prevent accidental leaks)
+*.csv
+*.parquet
+*.feather
+*.xlsx
+*.pdf
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

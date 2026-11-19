@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kdbox"
+version = "0.1.0"
+description = "Interactive Jupyter widgets for exploring large-scale multivariate time-series data using Numba-accelerated KD-trees."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Damian Kozlowski", email = "damian.kozlowski@piatnica.com.pl" },
+]
+requires-python = ">=3.10"
+keywords = ["time-series", "visualization", "jupyter", "anywidget", "kd-tree", "numba"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Jupyter",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+    "anywidget>=0.9.0",
+    "ipywidgets>=8.0.0",
+    "matplotlib>=3.7.0",
+    "numba>=0.58.0",
+    "numpy>=1.24.0",
+    "pillow>=10.0.0",
+    "traitlets>=5.9.0",
+]
+
+[project.optional-dependencies]
+data = [
+    "pandas>=2.0.0",
+    "scipy>=1.10.0",
+]
+jupyter = [
+    "jupyterlab>=4.0.0",
+]
+all = [
+    "kdbox[data,jupyter]",
+]
+
+[project.urls]
+Homepage = "https://github.com/OSM-Piatnica/kdbox"
+Repository = "https://github.com/OSM-Piatnica/kdbox"
+Issues = "https://github.com/OSM-Piatnica/kdbox/issues"
+
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.0.0",
+    "pandas>=2.0.0",
+    "pytest>=8.0.0",
+    "scipy>=1.10.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kdbox"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

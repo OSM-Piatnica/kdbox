@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12", "3.14"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv and Python ${{ matrix.python-version }}
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Run test suite
+        run: uv run pytest -v
+
+      - name: Build distribution and verify JS asset
+        if: matrix.python-version == '3.12'
+        run: |
+          uv build
+          uv run python -c "
+          import glob, zipfile
+          whl = glob.glob('dist/*.whl')[0]
+          names = zipfile.ZipFile(whl).namelist()
+          assert 'kdbox/widget.js' in names, f'Missing widget.js in {whl}'
+          assert 'kdbox/py.typed' in names, f'Missing py.typed in {whl}'
+          print(f'Verified {whl}: {len(names)} files')
+          "

@@ -1,0 +1,47 @@
+kdbox
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── .pytest_cache
+│   ├── .gitignore
+│   ├── CACHEDIR.TAG
+│   ├── README.md
+│   └── v
+│       └── cache
+│           └── nodeids
+├── .python-version
+├── LICENSE
+├── README.md
+├── dist
+│   ├── .gitignore
+│   ├── kdbox-0.1.0-py3-none-any.whl
+│   └── kdbox-0.1.0.tar.gz
+├── docs
+│   ├── architecture.md
+│   └── user_guide.md
+├── examples
+│   ├── .ipynb_checkpoints
+│   │   └── demo-checkpoint.ipynb
+│   └── demo.ipynb
+├── pyproject.toml
+├── src
+│   └── kdbox
+│       ├── .ipynb_checkpoints
+│       │   └── widget-checkpoint.py
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-314.pyc
+│       │   ├── kd_tree.cpython-314.pyc
+│       │   ├── utils.cpython-314.pyc
+│       │   └── widget.cpython-314.pyc
+│       ├── kd_tree.py
+│       ├── py.typed
+│       ├── utils.py
+│       ├── widget.js
+│       └── widget.py
+├── tests
+│   ├── __pycache__
+│   │   └── test_kdbox.cpython-314-pytest-9.2.0.pyc
+│   └── test_kdbox.py
+└── uv.lock
